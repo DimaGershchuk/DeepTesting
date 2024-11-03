@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Detail</title>
+</head>
+<body>
+    <h1>{{ task.title }}</h1>
+    <p><strong>Description:</strong> {{ task.description }}</p>
+    <p><strong>Due date:</strong> {{ task.due_date }}</p>
+    <p><strong>Status:</strong> {{ task.status }}</p>
+
+    <a href="{% url 'task_update' task.id %}">Edit Task</a>
+
+    <br>
+
+    <form action="{% url 'task_delete' task.id %}" method="GET">
+        {% csrf_token %}
+        <button type="submit">Delete Book</button>
+    </form>
+    <br>
+
+    <a href="{% url 'task_list' %}">Back to Task List</a>
+</body>
+</html>
